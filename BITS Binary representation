@@ -1,0 +1,30 @@
+class Solution{
+    static String getBinaryRep(int N){
+        
+        int n = 1;
+        String str = "";
+        while(N!=0){
+            str=(N%2)+str;
+            if(N==1) break;
+            N=N/2;
+            n++;
+        }
+        while(n<30){
+            str="0"+str;
+            n++;
+        }
+        return str;
+    }
+}
+_________________________________________________
+class Solution{
+    static String getBinaryRep(int N){
+        // code here
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<30;i++){
+            sb.insert(0, N & 1);
+            N = N >> 1;
+        }
+        return sb.toString();
+    }
+}
