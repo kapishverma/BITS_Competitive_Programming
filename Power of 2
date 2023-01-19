@@ -1,0 +1,41 @@
+
+class Solution{
+    
+    // Function to check if given number n is a power of two.
+    public static boolean isPowerofTwo(long n){
+        return (n != 0) && ((n & (n-1)) == 0);
+    }
+    
+}
+Numbers that are present in the power of 2 have only one setBit.
+
+Examples:
+Input : n = (4)10 = (100)2 - have only one setBit hence can be expressed in the from of power of 2.
+22 = 4
+Output : Yes
+
+Input : n = (7)10 = (111)2 - have more than one bit is set so not present in power of 2.
+Output : No
+
+Input: n = (32)10 = (10000)2 - have only one setBit hence can be expressed in the from of power of 2.
+25 = 32
+Output: Yes
+
+Expected Approach:
+Intuition
+Keep dividing the number by two, i.e, do n = n>>1 iteratively. at each iteration check 
+if first bit(from right) is 1 then increase the bit counter and at the end check if the bit count is equal to 1 then return true else return false.
+
+Implementation
+Steps:-
+
+First check if n==0 return false.
+Initialize a counter variable to count the number of set bit.
+Run a while loop till number>0.
+check if first bit(from right) is 1 then increase the counter.
+Devide n by 2 i.e:- n = n>>1.
+If count==1 return true.
+Else return false. 
+Complexity
+Time Complexity: O(log n), As we are iterating through all bits of number.
+Auxiliary Space: O(1), We are not using any extra space.
