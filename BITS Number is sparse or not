@@ -1,0 +1,21 @@
+
+class Solution
+{
+    //Function to check if the number is sparse or not.
+    public static boolean isSparse(int n)
+    {
+        while(n!=0){
+            if((n&3)==3)//(just match last two bits with 3(i.e 0000..11)
+        // means (...11)&(00..11) gives 3(000..11) but with all other gives(0,1,or2))
+              return false;    
+              n=n>>1;
+        }
+        return true;
+______________________________another method________________________________
+        //     int n1 = n>>1; second method
+        // if((n & n1) > 0)
+        //      return false;
+        // return true;
+    }
+    
+}
