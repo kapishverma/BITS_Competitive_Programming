@@ -1,0 +1,48 @@
+class Solution
+{
+    //Function to swap odd and even bits.
+    public static int swapBits(int n) 
+    {
+        for(int i = 0; i<32 ; i+=2){
+            int i_th  = (n>>i)&1;// find ith bit
+            int i_1_th = (n>>(i+1))&1;//fint (i+1)th bit
+            
+            n = n-(i_th<<i)//remove i_th bit
+                -(i_1_th <<(i+1))// remove i+1 th bit
+                +(i_th<<(i+1))// put i_th bit at (i+1)th position
+                +(i_1_th<<i);// put i+1 th bit to i th position
+            
+        }
+        return n;
+        
+	   // int even_bit = n & 0xAAAAAAAA;//get all even bits of n
+	   // int odd_bit = n & 0x55555555;// get all odd bits of n
+	   // even_bit>>=1;//right shift even bits
+	   // odd_bit<<=1;// left shift odd bits
+	   // return even_bit|odd_bit; // combine even and odd bits
+	}
+    
+}
+___________________________________________________________________
+Naive Approach: Below is the idea to solve the problem
+
+For every even index i in the binary representation of N starting from index 0 swap bits with (i+1)th index.
+
+Follow the steps below to implement the idea:
+Find the bit at i and i+1 index.
+To swap the bits subtract and add corresponding values.
+To remove bit at ith bit to i+1. subtract i_bit<<i and add it at i+1 index for that we need to add i_bit<<(i+1).
+Similarly subtract (i+1)th bit and add it to ith index.
+Below is the implementation of above approach.
+__________________________________________________________________-
+Efficient Approach: Below is the idea to solve the problem.
+
+The value even_bits obtained by even bits of N and Right shifted (>>) by 1 on even_bits and similarly obtain value odd_bits of odd bits of N and perform left shift (<<) by 1 operation on odd_bits. Now (odd_bits | even_bits) will give the desired value.
+
+Follow the below steps to implement the approach:
+
+Initialize variable even_bits with bitwise and of N with 0xAAAAAAAA(32 bit number with all even bits set as 1 and all odd bits as 0). 
+Initialize variable odd_bits with bitwise and of N with 0x55555555. The number 0x55555555 is a 32 bit number with all odd bits set as 1 and all even bits as 0. 
+Right shift even_bits by 1 and Left shift odd_bits by 1. 
+Return or of even_bits with odd_bits . 
+Below is the Implementation of above approach.
