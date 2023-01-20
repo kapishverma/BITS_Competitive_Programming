@@ -1,0 +1,62 @@
+
+class Solution{
+    
+    /*  Function to calculate the longest consecutive ones
+    *   N: given input to calculate the longest consecutive ones
+    */
+    public static int maxConsecutiveOnes(int N) {
+        
+        // Your code here
+        int longest = 0;
+        while(N!=0){
+            if((N&1)==1){
+                int t = 0;
+                while((N&1)==1){
+                    N=N>>1;
+                    t++;
+                }
+                if(t>longest)
+                longest=t;
+            }
+            N=N>>1;   
+        }
+        return longest;
+        
+    }
+}
+_______________________________________________________________-another_________________
+The idea is to take bitwise AND of N with left shifted version of itself, 
+by doing this we're effectively removing the trailing 1 from every sequence
+of consecutive 1s in binary representation of N.
+
+Implementation
+Initialize a variable count as 0.
+Run a loop while N>0 or it is not zero.
+Take bitwise AND of N with left shifted version of itself(N<<1), store the result in N.
+Increase count by 1.
+Return count as answer.
+Let us understand it better with the help of an example:
+Input: 222
+                                                     Binary Representation 
+In 1st iteration: 
+                            N=222        :          1 1 0 1 1 1 1 0
+                            (N<<1)       :          1 0 1 1 1 1 0 0
+                  N = (N & (N << 1))     :          1 0 0 1 1 1 0 0 
+In 2nd iteration: 
+                                N        :          1 0 0 1 1 1 0 0
+                           (N<<1)        :          0 0 1 1 1 0 0 0
+                 N = (N & (N << 1))      :          0 0 0 1 1 0 0 0 
+In 3nd iteration: 
+                               N        :          0 0 0 1 1 0 0 0
+                          (N<<1)        :          0 0 1 1 0 0 0 0
+              N = (N & (N << 1))        :          0 0 0 1 0 0 0 0 
+In 4th iteration: 
+                              N        :          0 0 0 1 0 0 0 0
+                         (N<<1)        :          0 0 1 0 0 0 0 0
+             N = (N & (N << 1))        :          0 0 0 0 0 0 0 0 
+
+Return 4 as answer.
+
+Complexity
+Time Complexity: O(log(N)), as while loop can have log2(N) iterations.
+Auxiliary Space: O(1), as we are not using any extra space.
