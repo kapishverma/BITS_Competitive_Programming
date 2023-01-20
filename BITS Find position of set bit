@@ -1,0 +1,17 @@
+
+class Solution {
+    static int findPosition(int N) {
+        // code here
+        if(N==0)return -1;
+        int index = 0;
+        while(N!=0){
+            if((N&1)==1){
+                if(N>1)
+                return -1;
+               }
+            index++;
+            N=N>>1;
+        }
+        return index;
+    }
+}
