@@ -1,0 +1,13 @@
+class Solution {
+    static int setBits(int N) {
+        // code here
+        int result = 0;
+        while(N!=0){
+            
+            if((N&1)==1)
+              result++;
+              N=N>>1;
+        }
+        return result;
+    }
+}
