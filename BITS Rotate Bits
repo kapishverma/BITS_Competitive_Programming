@@ -7,7 +7,7 @@ class Solution
         ArrayList<Integer> op = new ArrayList<>();
         D=D%16;
         int a,b;
-        a = ((N<<D)|(N>>(16-D)))&0xFFFF; //(0xFFFF means 1111 1111 1111 1111) & nikala ja raha 
+        a = ((N<<D)|(N>>(16-D)))&0xFFFF; //(0xFFFF means 1111 1111 1111 1111) & nikala ja raha right shift karne pe 16+ bits ban ja rha
         b = ((N>>D)|(N<<(16-D)))&65535;  // its decimal value is 65535
         op.add(a);
         op.add(b);
