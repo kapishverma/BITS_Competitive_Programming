@@ -1,0 +1,45 @@
+
+__________________________________COPY_M_DETAILED_EXPLAINED_HAI_________________________________________
+
+class Solution{
+    static int countBits(int N, long A[]){
+        int out = 0;
+        for(int i = 0 ; i<31 ; i++){
+            long count = 0;
+            for(int j =0 ; j<N ; j++){
+              if((A[j]&(1<<i))!=0)
+                  count++;
+            }
+            out =(int)(out+(count%1000000007)*(((N-count)%1000000007)*2)%1000000007)%1000000007;
+        }
+        return out;
+    }
+    
+    // static int helper(long a , long b){
+    //     int count = 0;
+    //     while(a!=0 || b!=0){
+    //         if((a&1)!=(b&1))
+    //           count++;
+    //         a>>=1;
+    //         b>>=1;
+    //     }
+    //     return count;
+    // }
+    // static int countBits(int N, long A[])
+    // { int count = 0;
+    // int[][] dp = new int[N][N];
+    // for(int i = 0 ; i<N; i++){
+    //     for(int j = 0 ; j<N ; j++){
+    //         if(dp[i][j]!=0){
+    //          count = count+dp[i][j];   
+    //         }else{
+    //             dp[i][j]=dp[j][i]=helper(A[i],A[j]);
+    //             count = count+dp[i][j];   
+    //         }
+    //         count= count%1000000007;
+    //     }
+    // }
+    // return count;
+     
+    // }
+}
