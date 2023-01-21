@@ -1,0 +1,19 @@
+
+class Solution {
+    static Long reversedBits(Long X) {
+        // code here
+        int si = 0 ; int ei = 31; 
+        while(si<ei){
+            long si_th = (X>>si)&1; //find si_th bit
+            long ei_th = (X>>ei)&1; //find ei_th bit
+            
+            X = X-(si_th<<si)//remove si_th bit
+                -(ei_th <<ei)//remove ei_th bit
+                +(si_th<<ei)// put si_th bit at ei_th position
+                +(ei_th<<si);//put ei_th bit to si th position
+            si++;
+            ei--;
+        }
+        return X;
+    }
+}
