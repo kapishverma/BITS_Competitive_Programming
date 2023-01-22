@@ -1,0 +1,19 @@
+
+class Solution
+{
+    int sum(int a , int b)
+    {
+      int sum =0;
+      int remaining = 0;
+      int i = 0;
+      while(i<32){
+          int x = (a>>i)&1;
+          int y = (b>>i)&1;
+          sum = sum|((x^y^remaining)<<i);
+          remaining = (x&remaining)|(y&remaining)|(x&y);
+          i++;
+      }
+      return sum;
+    //  return ((a&b)<<1)+(a^b);
+    }
+}
