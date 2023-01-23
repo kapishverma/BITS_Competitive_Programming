@@ -12,7 +12,7 @@
                 for(int k = j+1 ; k<z ; k++){
                     
                      long  x =  ((long)1<<i)|((long)1<<j)|((long)1<<k);
-                      
+ // inn rahega to (1<<32) will become 1 to galat ans aaega                     
                      if(L<=x && R>=x)
                         req_num++;
                 }
