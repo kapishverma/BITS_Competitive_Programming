@@ -23,7 +23,8 @@ class Solution {
              if(A>B){      
              int i = 0 ;
              while(A!=B){
-             int temp = result-(((result>>i)&1)<<i);
+         //    int temp = result-(((result>>i)&1)<<i);
+             int temp = result^(((result>>i)&1)<<i);
                  if(result!=temp){
                     result=temp;
                     A--;
