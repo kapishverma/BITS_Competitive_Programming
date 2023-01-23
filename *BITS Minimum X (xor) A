@@ -1,0 +1,67 @@
+class Solution {
+    static int bitCount(int n){
+        int count =0;
+        
+        for(int i =0 ; i<32;i++){
+            if(((n>>i)&1)==1)
+              count++;
+              if((n>>i)==0)
+                 break;
+        }
+        return count;
+    }
+     public static int minVal(int a, int b) {
+         
+         
+         int B = bitCount(b);
+         int A = bitCount(a);
+         
+         if(B==A)return a;
+         
+         int result = a;
+    
+             if(A>B){      
+             int i = 0 ;
+             while(A!=B){
+             int temp = result-(((result>>i)&1)<<i);
+                 if(result!=temp){
+                    result=temp;
+                    A--;
+                  }
+                i++;
+             }
+        }else{
+             int i = 0 ;
+             while(A!=B){
+                 if(((result>>i)&1)==0){
+                      result = result|(1<<i);
+                        A++;
+                       }
+                   i++;
+                 }
+             }
+       return result;  
+     }
+}
+    
+//     public static int minVal(int a, int b) {
+          
+//           int i = 0;
+//           int B = bitCount(b);
+//           int minXOR = Integer.MAX_VALUE;
+//           int result = 0;
+//           while(i<=(a<<1) || i<=(b<<1)){
+              
+//               if(bitCount(i) == B){
+
+//                  if(minXOR>(i^a)){
+//                      result=i;
+//                      minXOR = (i^a);
+//               }
+//             }
+//             if(minXOR==0)break;
+//               i++;
+//           }
+//         return result;
+//     }
+// }
