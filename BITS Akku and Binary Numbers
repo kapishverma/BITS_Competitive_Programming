@@ -1,0 +1,23 @@
+    long solve(long L, long R){
+          int z = 0;
+        while((R>>z)>0){
+            z++;
+        }
+        long req_num = 0;
+        
+        for(int i = 0 ; i<z-2 ;i++){
+    
+            for(int j = i+1 ; j<z-1 ; j++){
+             
+                for(int k = j+1 ; k<z ; k++){
+                    
+                     long  x =  ((long)1<<i)|((long)1<<j)|((long)1<<k);
+                      
+                     if(L<=x && R>=x)
+                        req_num++;
+                }
+             }
+         }
+        return  req_num ;    
+    }
+}
