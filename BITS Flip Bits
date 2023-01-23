@@ -1,0 +1,33 @@
+class Solution {
+
+    public static int maxOnes(int a[], int n) {
+        // Initialize count of ones and maximum difference
+        // between count of 1s and 0s in a subarray
+        int orig_ones_count = 0;
+      
+        // Initiale overall max diff for any subarray
+        int max_diff = 0;
+      
+        // Initialize current diff
+        int curr_max = 0;
+      
+        for (int i = 0; i < n; i ++)
+        {
+            // Count of ones in original array (Not related
+            // to Kadane's algorithm)
+            if (a[i] == 1)
+               orig_ones_count ++;
+      
+            // Value to be considered for finding maximum sum
+            int val = (a[i] == 0)? 1 : -1;
+      
+            // Update current max and max_diff
+            curr_max = Math.max(val, curr_max + val);
+            max_diff = Math.max(max_diff, curr_max);
+        }
+        max_diff = Math.max(0, max_diff);
+      
+        return orig_ones_count + max_diff;
+    
+    }
+}
