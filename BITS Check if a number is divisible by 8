@@ -1,0 +1,25 @@
+
+class Solution{
+    int DivisibleByEight(String S){
+        //code here
+        int n = S.length();
+        if(n<3){
+         int a = Integer.parseInt(S);
+            if(a%8==0)return 1;
+            return -1;
+        }
+        int a = Integer.parseInt(S.substring(n-3,n));
+        if(a%8==0)return 1;
+        return -1;
+    }
+}
+______________________________________second approch___________________
+Approach: Result = (((n >> 3) << 3) == n). First we shift the 3 bit right then 
+we shift the 3 bit left and then compare the number with the given number if 
+the number is equal to the number then it is the divisible by 8 . 
+Explanation: 
+Example: n = 16 given so binary of the 16 is 10000 now we shift the 
+3 bit right, now we have 00010 so again we shift the 3 bit left, then
+we have 10000 now compare with the given number first 16==16 in binary 
+so it true so the number is divisible by 8.
+ 
