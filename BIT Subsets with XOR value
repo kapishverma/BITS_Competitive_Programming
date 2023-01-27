@@ -1,0 +1,26 @@
+static int helperFunction(int arr[] , int n , int si ,int xor, int k){
+        if(si==n){
+            if(xor==k)return 1;
+            else return 0;
+        }
+    
+        int includeSI = helperFunction(arr,n,si+1,xor^arr[si],k);
+        int excludeSI = helperFunction(arr,n,si+1,xor,k);
+        return includeSI+excludeSI;
+        
+    }
+    static int subsetXOR(int arr[], int N, int K) {
+       return helperFunction(arr,N,0,0,K);
+    }
+//_____________________________________________________________
+static int helperFunction(int arr[] , int n , int si ,int xor){
+        if(si==n && xor==0)return 1;
+        else if(si==n)return 0;
+    
+        int includeSI = helperFunction(arr,n,si+1,xor^arr[si]);
+        int excludeSI = helperFunction(arr,n,si+1,xor);
+        return includeSI+excludeSI;
+    }
+    static int subsetXOR(int arr[], int N, int K) {
+       return helperFunction(arr,N,0,K);
+    }
